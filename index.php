@@ -25,6 +25,33 @@
             'imagem' => "img/cappuccino.jpg"
         ]
     ];
+
+    $produtoAlmoco = [
+        [
+            'nome' => "Bife",
+            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
+            'preco' => "27.90",
+            'imagem' => "img/bife.jpg"
+        ],
+        [
+            'nome' => "Bife",
+            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
+            'preco' => "27.90",
+            'imagem' => "img/bife.jpg"
+        ],
+        [
+            'nome' => "Bife",
+            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
+            'preco' => "27.90",
+            'imagem' => "img/bife.jpg"
+        ],
+        [
+            'nome' => "Bife",
+            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
+            'preco' => "27.90",
+            'imagem' => "img/bife.jpg"
+        ]
+    ];
 ?>
 
 <!doctype html>
@@ -75,14 +102,16 @@
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-almoco-produtos">
+                <?php foreach( $produtoAlmoco as $almoco): ?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="img/bife.jpg">
+                        <img src="<?= $almoco['imagem']?>">
                     </div>
-                    <p>Bife</p>
-                    <p>Bife, arroz com feijão e uma deliciosa batata frita</p>
-                    <p>R$ 27.90</p>
+                    <p><?= $almoco['nome'] ?></p>
+                    <p><?= $almoco['descricao'] ?>ta</p>
+                    <p><?= "R$ " . $almoco['preco'] ?></p>
                 </div>
+                <?php endforeach; ?>
             </div>
 
         </section>
