@@ -1,57 +1,11 @@
 <?php
-    $produtosCafe = [
-        [
-            'nome' => "Café Cremoso",
-            'descricao' => "Café cremoso irresistivelmente suave e que envolve seu paladar.",
-            'preco' => "5.00",
-            'imagem' => "img/cafe-cremoso.jpg"
-        ],
-        [
-            'nome' => "Café Com Leite",
-            'descricao' => "Café cremoso irresistivelmente suave e que envolve seu paladar.",
-            'preco' => "5.00",
-            'imagem' => "img/cafe-com-leite.jpg"
-        ],
-        [
-            'nome' => "Café Gelado",
-            'descricao' => "Café cremoso irresistivelmente suave e que envolve seu paladar.",
-            'preco' => "7.00",
-            'imagem' => "img/cafe-gelado.jpg"
-        ],
-        [
-            'nome' => "Cappuccino",
-            'descricao' => "Café cremoso irresistivelmente suave e que envolve seu paladar.",
-            'preco' => "7.00",
-            'imagem' => "img/cappuccino.jpg"
-        ]
-    ];
-
-    $produtoAlmoco = [
-        [
-            'nome' => "Bife",
-            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
-            'preco' => "27.90",
-            'imagem' => "img/bife.jpg"
-        ],
-        [
-            'nome' => "Bife",
-            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
-            'preco' => "27.90",
-            'imagem' => "img/bife.jpg"
-        ],
-        [
-            'nome' => "Bife",
-            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
-            'preco' => "27.90",
-            'imagem' => "img/bife.jpg"
-        ],
-        [
-            'nome' => "Bife",
-            'descricao' => "Bife, arroz com feijão e uma deliciosa batata frita",
-            'preco' => "27.90",
-            'imagem' => "img/bife.jpg"
-        ]
-    ];
+    require "src/conexao-db.php";
+    $sql1 = "SELECT * FROM produtos WHERE tipo = 'cafe'";
+    $sql2 = "SELECT * FROM produtos WHERE tipo = 'almoco'";
+    $statement = $pdo -> query($sql1);
+    $statement2 = $pdo -> query($sql2);
+    $produtosCafe = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $produtoAlmoco = $statement2->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!doctype html>
@@ -87,7 +41,7 @@
                 <?php foreach ($produtosCafe as $cafe): ?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="<?= $cafe['imagem']; ?>">
+                        <img src="<?= "img/" . $cafe['imagem']; ?>">
                     </div>
                     <p><?= $cafe['nome']; ?></p>
                     <p><?= $cafe['descricao']; ?></p>
@@ -105,7 +59,7 @@
                 <?php foreach( $produtoAlmoco as $almoco): ?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="<?= $almoco['imagem']?>">
+                        <img src="<?= "img/" . $almoco['imagem']?>">
                     </div>
                     <p><?= $almoco['nome'] ?></p>
                     <p><?= $almoco['descricao'] ?>ta</p>
